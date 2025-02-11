@@ -57,13 +57,12 @@ export function makeMove(position: Position, game: GameState): GameState {
     // check if winner
     const winner = calculateWin(newCells)
     if (winner) {
+        const winMessage = `${game.currentPlayer} wins!`
+
         console.log(`${game.currentPlayer} wins!!!`)
         //time delay before restart
-        setTimeout(() => {
-            console.log("Loading new game....");
-        }, 10000);
-       
-            return initialGameState;  //resets the game
+    
+            return initialGameState;  //returns a winner message
     } 
     //otherwise if no winner and after a valid move, we go to next player
     const nextPlayer: Player = game.currentPlayer === "x" ? "o" : "x";
