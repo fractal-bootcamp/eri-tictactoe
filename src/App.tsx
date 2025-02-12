@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useMemo } from 'react'
 import '../game.ts'
 import './App.css'
 import { GameState, initialGameState, makeMove, Position, newGame } from '../game.ts'
-import { io, Socket } from 'socket.io-client';
+import { io } from 'socket.io-client';
 // import { v4 as uuidv4 } from 'uuid'
 
 
@@ -14,11 +14,8 @@ const socket = io('http://localhost:3001')
 function App() {
   const [game, setGame] = useState<GameState>(initialGameState);
 
-  //useEffect
   useEffect(() => {
-    // socketRef.current = socket;
-    //recieving data/current state of the game
-    socket.on('gameUpdate', (gameState) => {
+    socket.on('gameUpdate', (gameState: GameState) => {
       setGame(gameState);
     });
     //closes web socket after player makes move

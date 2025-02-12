@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "serve": "bun run --watch server.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -13,6 +14,7 @@
     "@elysiajs/cors": "^1.2.0",
     "@elysiajs/eden": "^1.2.0",
     "@tailwindcss/vite": "^4.0.6",
+    "@types/express": "^5.0.0",
     "elysia": "^1.2.12",
     "express": "^4.21.2",
     "hono": "^4.7.0",

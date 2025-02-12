@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "game.ts", "server.ts"]
+  "include": ["src", "game.ts", "server.ts", "lobby.ts"]
 }

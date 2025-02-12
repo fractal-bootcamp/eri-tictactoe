@@ -1,7 +1,7 @@
 
 // define types
 export type Position = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-export type Cell = 'x' | 'o' | '';
+export type Cell = 'x' | 'o' | '' | null;
 export type Player = 'x' | 'o';
 export type GameState = {
     cells: [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell],
@@ -62,8 +62,17 @@ export function makeMove(position: Position, game: GameState): GameState {
         console.log(`${game.currentPlayer} wins!!!`)
         //time delay before restart
     
-            return initialGameState;  //returns a winner message
+            return {
+                ...game,
+                cells: newCells,
+                winner: game.currentPlayer,
+                message: `${game.currentPlayer} wins!!!`
+            };  //returns a winner message
     } 
+    if (!newCells.includes(null)) {
+        console.log("Tie");
+    }
+
     //otherwise if no winner and after a valid move, we go to next player
     const nextPlayer: Player = game.currentPlayer === "x" ? "o" : "x";
 
@@ -71,6 +80,10 @@ export function makeMove(position: Position, game: GameState): GameState {
     return { cells: newCells, currentPlayer: nextPlayer, winner: null, message: null }
 
 };
+
+
+
+
 
 export function newGame(): GameState {
     return structuredClone(initialGameState)
