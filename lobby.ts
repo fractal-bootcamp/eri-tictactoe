@@ -1,5 +1,5 @@
 import { Socket } from "engine.io-client";
-import { GameState, initialGameState } from "./game";
+import { GameState, initialGameState } from "./gameTicTac";
 
 export type GameId = string
 export type SocketId = string

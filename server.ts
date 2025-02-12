@@ -2,7 +2,7 @@ import express from 'express';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
 import cors from 'cors';
-import { initialGameState, makeMove, Position } from './game';
+import { initialGameState, makeMove, Position } from './gameTicTac';
 import { connectToLobby, createLobby, GameId, lobbies } from './lobby';
 
 // Create HTTP server to attach socket.io
