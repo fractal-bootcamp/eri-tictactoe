@@ -9,7 +9,7 @@ import { io } from 'socket.io-client';
 
 // const clientId = uuidv4()
 
-const socket = io('http://localhost:3001')
+const socket = io('https://eri-tictactoe.onrender.com/')
 
 function App() {
   const [game, setGame] = useState<GameState>(initialGameState);
