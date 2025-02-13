@@ -1,27 +1,23 @@
 //type definitions
 
-import { stringify } from "node:querystring";
-
-type HowMany = '1' | '2' | '3';
-type Color = 'R' | 'B' | 'G';
-type Shape = 'a' | 'b' | 'c';
-type Pattern = 'x' | 'y' | 'z';
-type Card = {
+export type HowMany = '1' | '2' | '3';
+export type Color = 'R' | 'B' | 'G';
+export type Shape = 'a' | 'b' | 'c';
+export type Pattern = 'x' | 'y' | 'z';
+export type Card = {
     howMany: HowMany,
     color: Color,
     shape: Shape,
     pattern: Pattern,
 };
-type Selection = number[]
-type Set = [Card, Card, Card];
-type Player = 'P1' | 'P2';
-type Field = Card[];
-type Score = [Player[], Player[]];
-type GameState = {
+export type Set = [Card, Card, Card];
+export type Player = 'P1' | 'P2';
+export type Field = Card[];
+export type Score = [Player[], Player[]];
+export type GameState = {
     field: Field,
     players: [Player, Player],
-    score: [number, number],
-    selected: Selection
+    score: [number, number]
 };
 
 
@@ -39,13 +35,14 @@ for (const howMany of cardNumber) {
     for (const color of cardColor) {
         for (const shape of cardShape) {
             for (const pattern of cardPattern) {
+                //const id = `${howMany}${color}${shape}${pattern}`
                 theDeck.push({ howMany, color, shape, pattern });
             }
         }
     }
 };
 
-//console.log(🌱 theDeck)
+//console.log(theDeck) 🌱 
 
 
 //draw single random card from deck to use in populateField function
@@ -62,7 +59,7 @@ function randomCard(theDeck: Card[]): Card | undefined {
 //draw card 9 times to populate the field
 //keep count of deck length
 
-function populateField(theDeck: Card[]): Field {
+export function populateField(theDeck: Card[]): Field {
     const field: Field = [];
     for (let i = 0; i < 9; i++) {
         const card = randomCard(theDeck);
@@ -79,11 +76,10 @@ function populateField(theDeck: Card[]): Field {
 
 //initialGameState
 
-const initialGameState: GameState = {
+export const initialGameState: GameState = {
     field: populateField(theDeck),
     players: ['P1', 'P2'],
     score: [0, 0],
-    selected: [0]
 }
 
 
@@ -111,7 +107,7 @@ const winningSet = ([c1, c2, c3]: [Card, Card, Card]): boolean => {
 
 //define how each player selects cards in a set
 
-function cardSelect(gameState: GameState, player: Player, set: Set) {
+export function cardSelect(gameState: GameState, player: Player, set: Set) {
 
     if (winningSet(set)) {
         console.log("Valid set!");
@@ -143,6 +139,8 @@ function cardSelect(gameState: GameState, player: Player, set: Set) {
 
 
 
+
+// Features to add 
 
 //if too much time passes, swap out cards in field for new / repopulate/new field button ==> diff from newGame
 
