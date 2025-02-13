@@ -7,8 +7,9 @@ import { io } from 'socket.io-client';
 // import { v4 as uuidv4 } from 'uuid'
 // const clientId = uuidv4()
 
+const SERVER_URL = import.meta.env.DEV ? 'http://localhost:3001' : 'https://eri-tictactoe.onrender.com'
 
-const socket = io('http://localhost:3001')
+const socket = io(SERVER_URL)
 
 function App() {
 

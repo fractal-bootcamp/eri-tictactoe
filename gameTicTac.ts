@@ -60,16 +60,16 @@ export function makeMove(position: Position, game: GameState): GameState {
         // const winMessage = `${game.currentPlayer} wins!`
 
         console.log(`${game.currentPlayer} wins!!!`)
-        //time delay before restart
+
 
         return {
-            ...game,
             cells: newCells,
+            currentPlayer: game.currentPlayer,
             winner: game.currentPlayer,
             message: `${game.currentPlayer} wins!!!`
         };  //returns a winner message
     }
-    if (!newCells.includes(null)) {
+    if (!newCells.includes('')) {
         console.log("Tie");
     }
 

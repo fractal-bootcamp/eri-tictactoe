@@ -5,11 +5,13 @@ import { GameState, initialGameState, Position } from '../gameTicTac.ts'
 import { io } from 'socket.io-client';
 // import { v4 as uuidv4 } from 'uuid'
 
-
-
 // const clientId = uuidv4()
 
-const socket = io('https://eri-tictactoe.onrender.com/')
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL ||
+  (import.meta.env.DEV ? 'http://localhost:3001' : 'https://eri-tictactoe.onrender.com');
+
+const socket = io(SERVER_URL)
 
 function App() {
   const [game, setGame] = useState<GameState>(initialGameState);
@@ -17,13 +19,14 @@ function App() {
   useEffect(() => {
     socket.on('gameUpdate', (gameState: GameState) => {
       setGame(gameState);
+      console.log(gameState)
     });
     //closes web socket after player makes move
     return () => {
       socket.off('gameUpdate');
     };
 
-  }, [socket]);
+  }, []);
 
 
   //handle move

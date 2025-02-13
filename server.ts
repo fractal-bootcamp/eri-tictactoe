@@ -8,7 +8,7 @@ import { initialGameState, makeMove, Position } from './gameTicTac';
 // Create HTTP server to attach socket.io
 
 const app = express();
-app.use(cors({ origin: ['https://cozy-malasada-607564.netlify.app', 'http://localhost:5173'], allowedHeaders: ['Content-Type', 'Authorizaion'], credentials: true }));
+app.use(cors({ origin: ['https://cozy-malasada-607564.netlify.app', 'http://localhost:5173'], allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }));
 
 
 const httpServer = createServer(app);
@@ -16,20 +16,19 @@ const PORT = process.env.PORT || 3001;
 
 var game = initialGameState
 
-//ws://localhost:3000/
-//http://localhost:3000/
 
 const io = new Server(httpServer, {
     cors: {
         origin: ['https://cozy-malasada-607564.netlify.app', 'http://localhost:5173'],
         methods: ['GET', 'POST'],
-        allowedHeaders: ['Content-Type', 'Authorizaion'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true, //cookies
     },
 });
 
 
 io.on('connection', (socket) => {
+    console.log(socket.id)
 
     // send the available lobbies to anyone who connects to the server
     // io.emit('gameLobby', lobbies)
@@ -56,6 +55,7 @@ io.on('connection', (socket) => {
         // verify that this player is actually valid for that GameId
         // get the game they are in from their socket.id
         game = makeMove(data, game)
+        console.log(game)
         io.emit('gameUpdate', game);
     });
 
