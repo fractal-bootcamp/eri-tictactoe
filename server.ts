@@ -8,7 +8,7 @@ import { initialGameState, makeMove, Position } from './gameTicTac';
 // Create HTTP server to attach socket.io
 
 const app = express();
-app.use(cors({ origin: ['https://cozy-malasada-607564.netlify.app/', 'http://localhost:5173'], credentials: true }));
+app.use(cors({ origin: ['https://cozy-malasada-607564.netlify.app/', 'http://localhost:5173'], allowedHeaders: ['Content-Type', 'Authorizaion'], credentials: true }));
 
 
 const httpServer = createServer(app);
