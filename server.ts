@@ -27,6 +27,15 @@ const io = new Server(httpServer, {
     },
 });
 
+app.get('/', (req, res) => {
+    res.send('WebSocket server is running!');
+});
+
+// enables web sockets explicitly
+io.engine.on("headers", (headers, req) => {
+    headers["Access-Control-Allow-Origin"] = "*";
+});
+
 io.on('connection', (socket) => {
 
     // send the available lobbies to anyone who connects to the server
