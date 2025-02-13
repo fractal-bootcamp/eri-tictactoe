@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: tic-tac-toe-backend
+    env: node
+    plan: free
+    autoDeploy: true
+    branch: first-deployment
+    buildCommand: |
+      # Install Bun
+      curl -fsSL https://bun.sh/install | bash
+      export PATH="$HOME/.bun/bin:$PATH"
+      # Temporarily set NODE_ENV to development so devDependencies are installed
+      NODE_ENV=development bun install
+      # Run the build (tsc and vite)
+      bun run build
+    startCommand: "bun run server.ts"
+    envVars:
+      - key: PORT
+        value: "3001"

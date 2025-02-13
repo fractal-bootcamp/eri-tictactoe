@@ -12,9 +12,9 @@
 }
 
 body {
-  background-color: bisque
+  background-color: bisque;
   opacity: 0.3;
-  
+
 }
 
 
@@ -27,10 +27,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center; 
+  text-align: center;
   font-weight: bold;
   font: stretch-extra-expanded;
-  color: pink 
+  color: pink
 }
 
 .board {
@@ -43,8 +43,7 @@ body {
 }
 
 .square:hover {
-  background-color:rgb(243, 243, 164);
+  background-color: rgb(243, 243, 164);
   border: 3px dotted rgb(243, 191, 253);
-  filter:blur(drop-shadow);
+  filter: blur(drop-shadow);
 }
-

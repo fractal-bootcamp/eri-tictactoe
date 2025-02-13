@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import '../gameTicTac.ts'
 import './App.css'
-import { GameState, initialGameState, makeMove, Position, newGame } from '../gameTicTac.ts'
+import { GameState, initialGameState, Position } from '../gameTicTac.ts'
 import { io } from 'socket.io-client';
 // import { v4 as uuidv4 } from 'uuid'
 
