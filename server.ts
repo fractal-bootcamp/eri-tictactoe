@@ -23,6 +23,7 @@ const io = new Server(httpServer, {
     cors: {
         origin: ['https://cozy-malasada-607564.netlify.app/', 'http://localhost:5173'],
         methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type', 'Authorizaion'],
         credentials: true, //cookies
     },
 });
