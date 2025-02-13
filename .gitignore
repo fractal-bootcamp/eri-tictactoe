@@ -24,3 +24,6 @@ scratch-app.tsx
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
