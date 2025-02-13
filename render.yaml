@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: eri-tictactoe
+    env: node
+    plan: free
+    autoDeploy: true
+    branch: main
+    buildCommand: render build
+    startCommand: "bun run server.ts"
+    envVars:
+      - key: PORT
+        value: "3001"

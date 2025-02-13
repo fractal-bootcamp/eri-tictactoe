@@ -3,20 +3,16 @@ import { Server } from 'socket.io';
 import { createServer } from 'http';
 import cors from 'cors';
 import { initialGameState, makeMove, Position } from './gameTicTac';
-import { connectToLobby, createLobby, GameId, lobbies } from './lobby';
+// import { connectToLobby, createLobby, GameId, lobbies } from './lobby';
 
 // Create HTTP server to attach socket.io
 
 const app = express();
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!!!')
-});
-
 
 const httpServer = createServer(app);
-const PORT = 3001
+const PORT = process.env.PORT || 3001;
 
 var game = initialGameState
 

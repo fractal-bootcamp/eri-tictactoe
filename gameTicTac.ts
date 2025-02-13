@@ -18,7 +18,7 @@ export const initialGameState: GameState = {
     message: null,
 };
 
-//define the function to check if a gae is won
+//define the function to check if a game is won
 const calculateWin = (cells: GameState['cells']) => {
     //define the winning patterns to end the game
     const winningPatterns = [
@@ -36,7 +36,7 @@ const calculateWin = (cells: GameState['cells']) => {
         const [a, b, c] = winningPatterns[i];
         //checks if position A has a value, then if the second & third values are a match to the first
         if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
-            return cells[a] 
+            return cells[a]
         }
     }
     //if no one wins return continue game    
@@ -47,9 +47,9 @@ const calculateWin = (cells: GameState['cells']) => {
 //how does a player make a move ? have to define relationship between position and player into cells(Gamestate) as new GameState
 export function makeMove(position: Position, game: GameState): GameState {
     //check if move is valid
-    if ( game.cells[position] !== '') {
-    return game;
-    } 
+    if (game.cells[position] !== '') {
+        return game;
+    }
     //game is player plus current cells so updating to new cells would = game.cells
     const newCells = structuredClone(game.cells) as GameState["cells"];
     //update value at cells[position] with game.current GameState
@@ -57,18 +57,18 @@ export function makeMove(position: Position, game: GameState): GameState {
     // check if winner
     const winner = calculateWin(newCells)
     if (winner) {
-        const winMessage = `${game.currentPlayer} wins!`
+        // const winMessage = `${game.currentPlayer} wins!`
 
         console.log(`${game.currentPlayer} wins!!!`)
         //time delay before restart
-    
-            return {
-                ...game,
-                cells: newCells,
-                winner: game.currentPlayer,
-                message: `${game.currentPlayer} wins!!!`
-            };  //returns a winner message
-    } 
+
+        return {
+            ...game,
+            cells: newCells,
+            winner: game.currentPlayer,
+            message: `${game.currentPlayer} wins!!!`
+        };  //returns a winner message
+    }
     if (!newCells.includes(null)) {
         console.log("Tie");
     }
