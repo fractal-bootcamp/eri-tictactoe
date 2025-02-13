@@ -9,15 +9,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://0d1e-96-250-79-68.ngrok-free.app',
-        changeOrigin: true,
-        secure: false, // Set to true if the server has proper SSL
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
-  },
 });
 
