@@ -1,7 +1,7 @@
 
 // define types
 export type Position = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-export type Cell = 'x' | 'o' | '' | null;
+export type Cell = 'x' | 'o' | ''
 export type Player = 'x' | 'o';
 export type GameState = {
     cells: [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell],
@@ -60,16 +60,15 @@ export function makeMove(position: Position, game: GameState): GameState {
         // const winMessage = `${game.currentPlayer} wins!`
 
         console.log(`${game.currentPlayer} wins!!!`)
-        //time delay before restart
 
         return {
-            ...game,
             cells: newCells,
+            currentPlayer: game.currentPlayer,
             winner: game.currentPlayer,
             message: `${game.currentPlayer} wins!!!`
         };  //returns a winner message
     }
-    if (!newCells.includes(null)) {
+    if (!newCells.includes('')) {
         console.log("Tie");
     }
 
